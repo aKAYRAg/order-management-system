@@ -3,3 +3,4 @@ tk==0.1.0
 bcrypt==4.0.1
 Pillow==10.0.0
 matplotlib==3.7.1 
+python-dotenv==1.0.0 

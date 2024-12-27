@@ -30,14 +30,27 @@ ENV/
 .vscode/
 *.swp
 *.swo
+.project
+.pydevproject
+.settings/
 
 # Database
 *.db
 *.sqlite3
+*.sqlite
 
 # Logs
 *.log
+logs/
 
-# OS specific
+# Environment variables
+.env
+
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db 
