@@ -153,7 +153,7 @@ class AdminPanel:
         try:
             if self._is_closing:
                 return
-                
+            
             self._is_closing = True
             
             # Cancel any pending timers
@@ -407,7 +407,7 @@ class AdminPanel:
             # Update the scrollregion to encompass the inner frame
             if hasattr(self, 'canvas') and self.canvas:
                 self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-                # Update the canvas window width when the main frame changes
+            # Update the canvas window width when the main frame changes
                 self.canvas.itemconfig(self.canvas.find_withtag("all")[0], width=event.width)
         
         main_frame.bind("<Configure>", _configure_canvas)
@@ -496,25 +496,11 @@ class AdminPanel:
         button_frame = ttk.Frame(parent_frame)
         button_frame.grid(row=2, column=0, columnspan=2, sticky="ew", padx=10, pady=10)
         button_frame.grid_columnconfigure(0, weight=1)
-        button_frame.grid_columnconfigure(1, weight=1)
         
         # Refresh Button with icon
         refresh_btn = ttk.Button(button_frame, text="🔄 Refresh List", 
                                command=self.refresh_customer_list, style="Custom.TButton")
-        refresh_btn.grid(row=0, column=0, padx=5, pady=5, sticky="e")
-        
-        # Regenerate Button with icon
-        def regenerate_customers():
-            if messagebox.askyesno("Confirm", "This will delete all existing customers and generate new ones. Are you sure?"):
-                if self.db_manager.regenerate_customers():
-                    messagebox.showinfo("Success", "Customers regenerated successfully!")
-                    self.refresh_customer_list()
-                else:
-                    messagebox.showerror("Error", "Failed to regenerate customers!")
-        
-        regen_btn = ttk.Button(button_frame, text="🔁 Regenerate Customers",
-                             command=regenerate_customers, style="Custom.TButton")
-        regen_btn.grid(row=0, column=1, padx=5, pady=5, sticky="w")
+        refresh_btn.pack(side=tk.LEFT, padx=5)
         
         # Add alternating row colors
         self.customer_tree.tag_configure('oddrow', background='#f0f0f0')
@@ -933,7 +919,6 @@ class AdminPanel:
                     self.window.after(0, lambda: self.refresh_logs())
                 else:
                     print(f"Failed to process order {order_id}")
-                    
         except Exception as e:
             print(f"Error in process_order_thread: {e}")
         finally:

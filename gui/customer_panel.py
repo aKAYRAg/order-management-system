@@ -204,7 +204,7 @@ class CustomerPanel:
                 if quantity <= 0:
                     messagebox.showerror("Error", "Quantity must be positive!")
                     return
-                    
+                
                 product_id = self.product_tree.item(selected[0])['values'][0]
                 
                 if self.db_manager.place_order(self.customer_details['customer_id'], product_id, quantity):
@@ -213,7 +213,6 @@ class CustomerPanel:
                     self.refresh_all()  # Refresh all views
                 else:
                     messagebox.showerror("Error", "Failed to place order! Please check your budget and product availability.")
-                    
             except ValueError:
                 messagebox.showerror("Error", "Please enter a valid quantity!")
         

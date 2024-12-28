@@ -53,17 +53,6 @@ python main.py
   - Username: customer1
   - Password: customer123
 
-## Screenshots
-
-### Login Screen
-![Login Screen](screenshots/login.png)
-
-### Admin Panel
-![Admin Panel](screenshots/admin_panel.png)
-
-### Order Management
-![Order Management](screenshots/orders.png)
-
 ## Technical Details
 
 - Built with Python 3.x
@@ -84,7 +73,6 @@ order-management-system/
 ├── gui/
 │   ├── admin_panel.py
 │   └── customer_panel.py
-├── screenshots/
 ├── main.py
 ├── requirements.txt
 └── README.md

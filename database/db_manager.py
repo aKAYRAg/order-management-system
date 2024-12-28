@@ -951,4 +951,28 @@ class DatabaseManager:
             return self.execute_transaction(_do_get_customer_orders, customer_id)
         except Exception as e:
             print(f"Error in get_customer_orders: {e}")
-            return [] 
+            return []
+            
+    def add_product(self, product_name: str, stock: int, price: float) -> bool:
+        """Yeni ürün ekle"""
+        def _do_add_product(conn: sqlite3.Connection, product_name: str, stock: int, price: float) -> bool:
+            try:
+                cursor = conn.cursor()
+                
+                # Ürünü ekle
+                cursor.execute('''
+                    INSERT INTO products (product_name, stock, price)
+                    VALUES (?, ?, ?)
+                ''', (product_name, stock, price))
+                
+                return True
+                
+            except Exception as e:
+                print(f"Error in _do_add_product: {e}")
+                return False
+        
+        try:
+            return self.execute_transaction(_do_add_product, product_name, stock, price)
+        except Exception as e:
+            print(f"Error in add_product: {e}")
+            return False 
